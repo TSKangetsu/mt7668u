@@ -10,14 +10,16 @@ ccflags-y += $(WLAN_CHIP_LIST)
 
 #WLAN_CHIP_ID=$(MTK_COMBO_CHIP)
 ifeq ($(WLAN_CHIP_ID),)
-    WLAN_CHIP_ID := MT6632
+    WLAN_CHIP_ID := MT7668
 endif
 
 ccflags-y += -DCFG_SUPPORT_DEBUG_FS=0
 ccflags-y += -DWLAN_INCLUDE_PROC
 ccflags-y += -DCFG_SUPPORT_AGPS_ASSIST=1
 ccflags-y += -DCFG_SUPPORT_TSF_USING_BOOTTIME=1
-ccflags-y += -Werror
+ccflags-y += -Wno-error
+ccflags-y +=-Wno-error=implicit-function-declaration
+ccflags-y +=-Wno-error=incompatible-pointer-types
 ccflags-y:=$(filter-out -U$(WLAN_CHIP_ID),$(ccflags-y))
 ccflags-y += -DLINUX -D$(WLAN_CHIP_ID)
 

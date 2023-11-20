@@ -2919,13 +2919,16 @@ static INT_32 wlanProbe(PVOID pvData, PVOID pvDriverData)
 				.sched_priority =
 					prAdapter->rWifiVar.ucThreadPriority
 			};
-			sched_setscheduler(prGlueInfo->main_thread,
-					   prGlueInfo->prAdapter->rWifiVar.ucThreadScheduling, &param);
+			sched_set_fifo(prGlueInfo->main_thread);
+			// sched_setscheduler(prGlueInfo->main_thread,
+			// 		   prGlueInfo->prAdapter->rWifiVar.ucThreadScheduling, &param);
 #if CFG_SUPPORT_MULTITHREAD
-			sched_setscheduler(prGlueInfo->hif_thread,
-					   prGlueInfo->prAdapter->rWifiVar.ucThreadScheduling, &param);
-			sched_setscheduler(prGlueInfo->rx_thread,
-					   prGlueInfo->prAdapter->rWifiVar.ucThreadScheduling, &param);
+			sched_set_fifo(prGlueInfo->hif_thread);
+			// sched_setscheduler(prGlueInfo->hif_thread,
+			// 		   prGlueInfo->prAdapter->rWifiVar.ucThreadScheduling, &param);
+			sched_set_fifo(prGlueInfo->rx_thread);
+			// sched_setscheduler(prGlueInfo->rx_thread,
+			// 		   prGlueInfo->prAdapter->rWifiVar.ucThreadScheduling, &param);
 #endif
 			DBGLOG(INIT, INFO,
 			       "Set pri = %d, sched = %d\n",

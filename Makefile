@@ -2,8 +2,6 @@
 # Compile Options
 # ---------------------------------------------------
 
-CONFIG_MTK_COMBO_WIFI_HIF=usb
-
 WLAN_CHIP_LIST:=-UMT6620 -UMT6628 -UMT5931 -UMT6630 -UMT6632
 ccflags-y += $(WLAN_CHIP_LIST)
 

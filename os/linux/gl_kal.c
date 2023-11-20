@@ -5398,8 +5398,8 @@ static int __mt_find_tracing_mark_write_symbol_fn(void *prData, const char *pcNa
 
 static inline void __mt_update_tracing_mark_write_addr(void)
 {
-	if (unlikely(tracing_mark_write_addr == 0))
-		kallsyms_on_each_symbol(__mt_find_tracing_mark_write_symbol_fn, NULL);
+	// if (unlikely(tracing_mark_write_addr == 0))
+	// 	kallsyms_on_each_symbol(__mt_find_tracing_mark_write_symbol_fn, NULL);
 }
 
 VOID kalMetTagPacket(IN P_GLUE_INFO_T prGlueInfo, IN P_NATIVE_PACKET prPacket, IN ENUM_TX_PROFILING_TAG_T eTag)
@@ -6670,7 +6670,7 @@ unsigned long kal_kallsyms_lookup_name(const char *name)
 {
 	unsigned long ret = 0;
 
-	ret = kallsyms_lookup_name(name);
+	// ret = kallsyms_lookup_name(name); // FIXME: not support in kernel exp
 	if (ret) {
 #ifdef CONFIG_ARM
 #ifdef CONFIG_THUMB2_KERNEL

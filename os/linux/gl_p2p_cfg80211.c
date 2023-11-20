@@ -1411,11 +1411,11 @@ int mtk_p2p_cfg80211_start_ap(struct wiphy *wiphy, struct net_device *dev, struc
 		if (mtk_Netdev_To_RoleIdx(prGlueInfo, dev, &ucRoleIdx) < 0)
 			break;
 
-		if (prGlueInfo->prP2PInfo[ucRoleIdx]->fgIsNetDevDetach) {
-			netif_device_attach(dev);
-			prGlueInfo->prP2PInfo[ucRoleIdx]
-					->fgIsNetDevDetach = FALSE;
-		}
+		// if (prGlueInfo->prP2PInfo[ucRoleIdx]->fgIsNetDevDetach) {
+		// 	netif_device_attach(dev);
+		// 	prGlueInfo->prP2PInfo[ucRoleIdx]
+		// 			->fgIsNetDevDetach = FALSE;
+		// }
 
 		if (chandef) {
 			mtk_p2p_cfg80211func_channel_format_switch(chandef, chandef->chan, &rRfChnlInfo);

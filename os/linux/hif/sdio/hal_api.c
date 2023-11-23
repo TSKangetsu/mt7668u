@@ -83,7 +83,7 @@
 
 #include <linux/mm.h>
 #ifndef CONFIG_X86
-#include <asm/memory.h>
+// #include <asm/memory.h>
 #endif
 
 #include "mt66xx_reg.h"
